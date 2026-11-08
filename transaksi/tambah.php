@@ -102,7 +102,7 @@ require __DIR__ . "/../includes/header.php";
 	<section class="transaction-panel transaction-fields">
 		<div class="form-field">
 			<label for="title">Judul Transaksi</label>
-			<input id="title" name="title" type="text" maxlength="150" value="<?= appEscape($title) ?>" placeholder="Contoh: Belanja kebutuhan" required>
+			<input id="title" name="title" type="text" maxlength="150" value="<?= appEscape($title) ?>" placeholder="Masukan Nama Pemasukan/Pengeluaran" required>
 		</div>
 		<div class="form-field form-two-columns">
 			<div>
