@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DompetKu - Personal Finance</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+        <div>
+            <div class="brand">
+                <img class="brand-logo" src="assets/logo-dompetku.svg" alt="">
+
+                <div class="brand-text">
+                    <h2>DompetKu</h2>
+                    <small>PERSONAL FINANCE</small>
+                </div>
+            </div>
+
+            <nav class="menu">
+
+                <a href="index.html" class="active">
+                    <span class="material-symbols-outlined">home</span>
+                    <span class="menu-text">Home</span>
+                </a>
+
+                <a href="laporan/index.php">
+                    <span class="material-symbols-outlined">receipt_long</span>
+                    <span class="menu-text">Reports</span>
+                </a>
+
+                <a href="grafik/index.php">
+                    <span class="material-symbols-outlined">query_stats</span>
+                    <span class="menu-text">Charts</span>
+                </a>
+
+                <a href="akun/index.php">
+                    <span class="material-symbols-outlined">account_balance_wallet</span>
+                    <span class="menu-text">Akun Keuangan</span>
+                </a>
+
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+
+            <div class="account-status">
+                <strong>✓ Status Akun</strong>
+                <p>Akun keuangan Anda siap digunakan.</p>
+            </div>
+
+            <a href="auth/logout.php" class="logout">
+                <span class="material-symbols-outlined" aria-hidden="true">logout</span>
+                <span>Keluar</span>
+            </a>
+
+            <small class="version">Versi 1.0.0</small>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="mainContent">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Buka atau tutup menu navigasi"
+                    aria-controls="sidebar"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Cari transaksi..."
+                    aria-label="Cari transaksi"
+                >
+
+            </div>
+
+            <a href="transaksi/tambah.php" class="topbar-add">
+                <span aria-hidden="true">+</span>
+                <span>Tambah Transaksi</span>
+            </a>
+
+            <div class="profile">
+
+                <div class="profile-info">
+                    <strong>Pengguna DompetKu</strong>
+                    <small>Akun Personal</small>
+                </div>
+
+                <div class="avatar">👤</div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+        <section class="content">
+
+            <!-- WELCOME -->
+            <div class="welcome">
+
+                <div>
+                    <span class="subtitle">RINGKASAN KEUANGAN</span>
+
+                    <h1>Selamat Datang di DompetKu!</h1>
+
+                    <p>
+                        Pantau dan kelola keuangan Anda dengan lebih mudah.
+                    </p>
+
+                    <p id="currentDate"></p>
+                </div>
+
+                <a href="transaksi/tambah.php" class="btn-primary">
+                    + Tambah Transaksi
+                </a>
+
+            </div>
+
+
+            <!-- SUMMARY CARDS -->
+            <div class="summary">
+
+                <!-- TOTAL SALDO -->
+                <div class="summary-card">
+
+                    <div class="card-icon balance-icon">
+                        <img src="assets/logo-dompetku.svg" alt="" class="balance-logo">
+                    </div>
+
+                    <span>Total Saldo</span>
+
+                    <h2>Rp 0</h2>
+
+                    <small>Saldo keseluruhan</small>
+
+                </div>
+
+
+                <!-- TOTAL PEMASUKAN -->
+                <div class="summary-card income">
+
+                    <div class="card-icon income-icon">↗</div>
+
+                    <span>Total Pemasukan</span>
+
+                    <h2>Rp 0</h2>
+
+                    <small>Jumlah pemasukan</small>
+
+                </div>
+
+
+                <!-- TOTAL PENGELUARAN -->
+                <div class="summary-card expense">
+
+                    <div class="card-icon expense-icon">↘</div>
+
+                    <span>Total Pengeluaran</span>
+
+                    <h2>Rp 0</h2>
+
+                    <small>Jumlah pengeluaran</small>
+
+                </div>
+
+
+                <!-- TARGET TABUNGAN -->
+                <div class="summary-card saving">
+
+                    <div class="card-icon saving-icon">🎯</div>
+
+                    <span>Target Tabungan</span>
+
+                    <h2>0%</h2>
+
+                    <small>Target bulan ini</small>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-widgets" hidden>
+
+                <section class="finance-panel cashflow-panel" aria-labelledby="cashflowTitle">
+                    <div class="panel-heading">
+                        <div>
+                            <h2 id="cashflowTitle">Tren Arus Kas</h2>
+                            <p>Perbandingan pemasukan dan pengeluaran</p>
+                        </div>
+                        <div class="chart-legend" aria-label="Keterangan grafik">
+                            <span><i class="legend-dot income-dot"></i>Pemasukan</span>
+                            <span><i class="legend-dot expense-dot"></i>Pengeluaran</span>
+                        </div>
+                    </div>
+                    <div class="chart-empty" role="status">
+                        <span class="chart-empty-icon" aria-hidden="true">⌁</span>
+                        <strong>Belum ada data arus kas</strong>
+                        <span>Grafik akan terisi setelah transaksi dicatat.</span>
+                    </div>
+                </section>
+
+                <section class="finance-panel budget-panel" id="budgets" aria-labelledby="budgetTitle">
+                    <div class="panel-heading">
+                        <div>
+                            <h2 id="budgetTitle">Alokasi Anggaran</h2>
+                            <p>Penggunaan anggaran bulan ini</p>
+                        </div>
+                        <span class="panel-caption">0 kategori</span>
+                    </div>
+                    <div class="budget-empty" role="status">
+                        <span aria-hidden="true">◴</span>
+                        <strong>Belum ada anggaran</strong>
+                        <p>Anggaran kategori akan tampil di sini.</p>
+                    </div>
+                </section>
+
+                <section class="finance-panel accounts-panel" id="accounts" aria-labelledby="accountsTitle">
+                    <div class="panel-heading">
+                        <div>
+                            <h2 id="accountsTitle">Akun Keuangan</h2>
+                            <p>Ringkasan akun yang Anda gunakan</p>
+                        </div>
+                    </div>
+                    <div class="account-empty" role="status">
+                        <span aria-hidden="true">▣</span>
+                        <div>
+                            <strong>Belum ada akun tambahan</strong>
+                            <p>Saldo utama tetap ditampilkan pada ringkasan di atas.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+
+            <!-- TRANSACTION HEADING -->
+            <div class="section-heading">
+
+                <div>
+                    <h2>Transaksi Terbaru</h2>
+                    <p>Daftar aktivitas keuangan Anda</p>
+                </div>
+
+                <a href="transaksi/index.php">
+                    Lihat Semua
+                </a>
+
+            </div>
+
+
+            <!-- TRANSACTION TABLE -->
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Nama Transaksi</th>
+                            <th>Kategori</th>
+                            <th>Tanggal</th>
+                            <th>Jenis</th>
+                            <th>Jumlah</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="transactionTable">
+
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 35px; color: #89949e;">
+                                Belum ada transaksi. Silakan tambahkan transaksi pertama Anda.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <nav class="mobile-nav" aria-label="Navigasi utama">
+        <a href="index.html" class="active"><span class="material-symbols-outlined" aria-hidden="true">home</span>Home</a>
+        <a href="laporan/index.php"><span class="material-symbols-outlined" aria-hidden="true">receipt_long</span>Reports</a>
+        <a href="transaksi/tambah.php" class="mobile-add" aria-label="Tambah transaksi">+</a>
+        <a href="grafik/index.php"><span class="material-symbols-outlined" aria-hidden="true">query_stats</span>Charts</a>
+        <a href="akun/index.php"><span class="material-symbols-outlined" aria-hidden="true">account_balance_wallet</span>Akun</a>
+    </nav>
+
+    <button type="button" class="sidebar-backdrop" id="sidebarBackdrop" aria-label="Tutup menu"></button>
+
+    <script src="assets/css/js/app.js"></script>
+
+</body>
+</html>
